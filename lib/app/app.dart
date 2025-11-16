@@ -1,4 +1,5 @@
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
+import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,6 +29,7 @@ class _CraftyBayState extends State<CraftyBay> {
   Widget build(BuildContext context) {
     return MaterialApp(
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
