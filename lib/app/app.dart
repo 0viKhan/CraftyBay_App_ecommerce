@@ -1,4 +1,5 @@
 import 'package:e_commerce_shop/app/controller/language_controller.dart';
+import 'package:e_commerce_shop/app/extensions/app_colors.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
 import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -41,6 +42,17 @@ class _CraftyBayState extends State<CraftyBay> {
           navigatorObservers: [observer],
           locale: languageController.currentLocale,
           supportedLocales: languageController.supportedLocales,
+          theme: ThemeData(
+            colorSchemeSeed: AppColors.themeColor,
+
+          ),
+          darkTheme: ThemeData(
+              colorSchemeSeed: AppColors.themeColor,
+              brightness: Brightness.dark
+
+          ),
+          themeMode: ThemeMode.light
+          ,
           home: SplashScreen(),
         );
       },

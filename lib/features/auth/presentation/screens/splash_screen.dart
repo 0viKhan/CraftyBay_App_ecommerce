@@ -16,15 +16,27 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(context.localization.hello),
-            LanguageChangeSwitch(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+            Spacer(),
+
+              Image.asset('assets/images/Craftybaylogo.png', width: 220, height: 220,),
+              Spacer(),
+              CircularProgressIndicator(),
+              const SizedBox(height: 12),
+              Text('Version 1.0'),
+              const SizedBox(height: 16),
+
+            ],
+          ),
         ),
 
+
       ),
+
     );
   }
 }
