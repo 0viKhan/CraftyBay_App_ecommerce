@@ -1,4 +1,7 @@
 {
 "hello":"হ্যালো",
-  "selectLanguage": "Select Language bn"
+  "selectLanguage": "Select Language",
+  "version": "version Back bn",
+  "WelcomeBack": "Welcome Back bn",
+  "LoginHeadLine": "Please enter your email and password bn"
 }

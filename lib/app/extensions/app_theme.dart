@@ -1,17 +1,61 @@
 import 'package:e_commerce_shop/app/extensions/app_colors.dart' show AppColors;
 import 'package:flutter/material.dart';
 
-class AppTheme
-{
- static ThemeData get lightTheme=> ThemeData(
-  colorSchemeSeed: AppColors.themeColor,
+class AppTheme {
+  static ThemeData get lightTheme =>
+      ThemeData(colorSchemeSeed: AppColors.themeColor,
+          filledButtonTheme:_filledButtonThemeData,
+        inputDecorationTheme:_inputDecorationTheme,
+        textTheme: TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold
+          )
+        )
+
+      );
+
+  static ThemeData get dartThemeData => ThemeData(
+    colorSchemeSeed: AppColors.themeColor,
+    brightness: Brightness.dark,
+    filledButtonTheme:_filledButtonThemeData,
+    inputDecorationTheme:_inputDecorationTheme,
+  );
+
+
+
+      static FilledButtonThemeData get _filledButtonThemeData=>
+         FilledButtonThemeData(
+  style: FilledButton.styleFrom(
+  fixedSize: Size.fromWidth(double.maxFinite),
+  shape: RoundedRectangleBorder(
+  borderRadius: BorderRadius.circular(8),
+  ),
+  padding: EdgeInsets.symmetric(vertical: 12),
+  textStyle: TextStyle(fontSize: 16, color: Colors.redAccent),
+  backgroundColor: AppColors.themeColor,
+  ),
 
   );
-static ThemeData get dartThemeData=> ThemeData(
-  colorSchemeSeed: AppColors.themeColor,
-  brightness: Brightness.dark
-,
-);
+  static InputDecorationTheme get _inputDecorationTheme=>InputDecorationTheme(
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+    hintStyle: TextStyle(
+      fontWeight: FontWeight.w300
+    ),
 
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.themeColor),
+    ),
+
+
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.themeColor),
+    ),
+
+
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.themeColor, width: 2),
+    ),
+  );
 
 }

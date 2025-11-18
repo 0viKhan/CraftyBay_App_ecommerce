@@ -1,6 +1,7 @@
 import 'package:e_commerce_shop/app/controller/language_controller.dart';
 import 'package:e_commerce_shop/app/extensions/app_colors.dart';
 import 'package:e_commerce_shop/app/extensions/app_theme.dart';
+import 'package:e_commerce_shop/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
 import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -48,6 +49,21 @@ class _CraftyBayState extends State<CraftyBay> {
           themeMode: ThemeMode.light
           ,
           home: SplashScreen(),
+          initialRoute: SplashScreen.name,
+          onGenerateRoute: (settings)
+          {
+            late Widget screen;
+            if(settings.name==SplashScreen.name)
+              {
+                screen=SplashScreen();
+              }
+            else if(settings.name==SignInScreen.name)
+              {
+                screen=SignInScreen();
+              }
+
+            return MaterialPageRoute(builder: (ctx)=>screen);
+          },
         );
       },
     );

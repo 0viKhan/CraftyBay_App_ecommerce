@@ -109,6 +109,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Language'**
   String get selectLanguage;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'version Back bn'**
+  String get version;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back'**
+  String get welcomeBack;
+
+  /// No description provided for @loginHeadLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email and password'**
+  String get loginHeadLine;
 }
 
 class _AppLocalizationsDelegate
