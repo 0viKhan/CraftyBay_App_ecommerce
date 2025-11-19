@@ -2,7 +2,9 @@ import 'package:e_commerce_shop/app/controller/language_controller.dart';
 import 'package:e_commerce_shop/app/extensions/app_colors.dart';
 import 'package:e_commerce_shop/app/extensions/app_theme.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:e_commerce_shop/features/auth/presentation/screens/sign_up_screen.dart' show SignUpScreen;
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
+import 'package:e_commerce_shop/features/auth/presentation/screens/verify_otp_screen.dart';
 import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -61,6 +63,14 @@ class _CraftyBayState extends State<CraftyBay> {
               {
                 screen=SignInScreen();
               }
+            else if(settings.name==SignUpScreen.name)
+            {
+              screen=SignUpScreen();
+            }
+            else if(settings.name==VerifyOtpScreen.name)
+            {
+              screen=VerifyOtpScreen();
+            }
 
             return MaterialPageRoute(builder: (ctx)=>screen);
           },
