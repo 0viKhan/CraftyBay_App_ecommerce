@@ -1,5 +1,7 @@
 import 'package:e_commerce_shop/app/extensions/localization_extension.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:e_commerce_shop/features/home/presentaion/screens/home_screen.dart';
+import 'package:e_commerce_shop/features/shared/presentation/screens/bottom_nav_holder.dart';
 import 'package:e_commerce_shop/features/shared/presentation/widgets/language_change_switch.dart';
 import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart' show State;
@@ -22,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 Future<void>_moveToNextScreen()async{
   await Future.delayed(Duration(seconds: 5));
-  Navigator.pushReplacementNamed(context, SignInScreen.name);
+  Navigator.pushReplacementNamed(context, BottomNavHolder.name);
 }
   @override
   Widget build(BuildContext context) {
