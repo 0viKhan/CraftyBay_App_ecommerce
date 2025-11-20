@@ -1,13 +1,10 @@
 import 'package:e_commerce_shop/app/controller/language_controller.dart';
-import 'package:e_commerce_shop/app/extensions/app_colors.dart';
+import 'package:e_commerce_shop/app/controller_binder.dart';
 import 'package:e_commerce_shop/app/extensions/app_theme.dart';
-import 'package:e_commerce_shop/features/auth/presentation/screens/sign_in_screen.dart';
-import 'package:e_commerce_shop/features/auth/presentation/screens/sign_up_screen.dart' show SignUpScreen;
+import 'package:e_commerce_shop/app/routes.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
-import 'package:e_commerce_shop/features/auth/presentation/screens/verify_otp_screen.dart';
 import 'package:e_commerce_shop/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -35,7 +32,7 @@ class _CraftyBayState extends State<CraftyBay> {
       init: CraftyBay.languageController,
 
       builder: (languageController) {
-        return MaterialApp(
+        return GetMaterialApp(
           localizationsDelegates: [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -52,28 +49,8 @@ class _CraftyBayState extends State<CraftyBay> {
           ,
           home: SplashScreen(),
           initialRoute: SplashScreen.name,
-          onGenerateRoute: (settings)
-          {
-            late Widget screen;
-            if(settings.name==SplashScreen.name)
-              {
-                screen=SplashScreen();
-              }
-            else if(settings.name==SignInScreen.name)
-              {
-                screen=SignInScreen();
-              }
-            else if(settings.name==SignUpScreen.name)
-            {
-              screen=SignUpScreen();
-            }
-            else if(settings.name==VerifyOtpScreen.name)
-            {
-              screen=VerifyOtpScreen();
-            }
-
-            return MaterialPageRoute(builder: (ctx)=>screen);
-          },
+          onGenerateRoute: onGenerateRoute,
+          initialBinding: ControllerBinding(),
         );
       },
     );
