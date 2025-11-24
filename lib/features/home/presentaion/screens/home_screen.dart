@@ -1,6 +1,11 @@
+import 'package:e_commerce_shop/app/asset_paths.dart';
+import 'package:e_commerce_shop/app/extensions/app_colors.dart';
+import 'package:e_commerce_shop/app/extensions/constants.dart';
+import 'package:e_commerce_shop/features/home/presentaion/screens/home_screen.dart';
 import 'package:e_commerce_shop/features/home/widgets/home_banner_slider.dart';
 import 'package:e_commerce_shop/features/shared/presentation/controller/main_nav_controller.dart';
 import 'package:e_commerce_shop/features/shared/presentation/widgets/app_bar_icon_button.dart';
+import 'package:e_commerce_shop/features/shared/presentation/widgets/product_card.dart' show ProductCard;
 import 'package:e_commerce_shop/features/shared/presentation/widgets/product_category_item.dart';
 import 'package:flutter/cupertino.dart'
     show Placeholder, StatefulWidget, State, BuildContext, Widget;
@@ -35,24 +40,37 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _build_search_bar(),
-            const SizedBox(height: 16),
-            HomeBannerSlider(),
-            buildSelectionHeader(title: 'Categories', onTapSeeAll: () {
-              Get.find<MainNavController>().moveToCategory();
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+              _build_search_bar(),
+              const SizedBox(height: 16),
+              HomeBannerSlider(),
+              buildSelectionHeader(title: 'Categories', onTapSeeAll: () {
+                Get.find<MainNavController>().moveToCategory();
+          
+              }),
+              const SizedBox(height: 16),
+          
+              buildCategoryList(),
+              buildSelectionHeader(title: 'New', onTapSeeAll: () {}),
+              const SizedBox(height: 16),
 
-            }),
-            const SizedBox(height: 16),
 
-            buildCategoryList(),
-            buildSelectionHeader(title: 'New', onTapSeeAll: () {}),
-            const SizedBox(height: 16),
 
-            buildSelectionHeader(title: 'Popular', onTapSeeAll: () {}),
-          ],
+              _buildNewProductList(),
+
+          
+              buildSelectionHeader(title: 'Popular', onTapSeeAll: () {}),
+              const SizedBox(height: 16),
+              _buildPopularProductList(),
+              buildSelectionHeader(title: 'Special', onTapSeeAll: () {}),
+              _buildSepeicalProductList()
+
+            ],
+          ),
         ),
       ),
     );
@@ -77,6 +95,39 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+Widget _buildNewProductList()
+{
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+
+      children: [1,2,3,4,5,6].map((e)=>ProductCard()).toList(),
+    ),
+  );
+      
+}
+Widget _buildPopularProductList()
+{
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      children: [1,2,3,4,5,6].map((e)=>ProductCard()).toList(),
+    ),
+  );
+
+}
+Widget _buildSepeicalProductList()
+{
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      children: [1,2,3,4,5,6].map((e)=>ProductCard()).toList(),
+    ),
+  );
+
+}
+
+
 
   Widget buildSelectionHeader({
     required String title,
@@ -107,3 +158,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
