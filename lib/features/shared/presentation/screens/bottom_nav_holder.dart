@@ -1,3 +1,4 @@
+import 'package:e_commerce_shop/features/category/presentation/screens/category_list_screen.dart';
 import 'package:e_commerce_shop/features/home/presentaion/screens/home_screen.dart';
 import 'package:e_commerce_shop/features/shared/presentation/controller/main_nav_controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +17,7 @@ class BottomNavHolder extends StatefulWidget {
 class _BottomNavHolderState extends State<BottomNavHolder> {
   final List<Widget>_screens=[
     HomeScreen(),
-    HomeScreen(),
+    CategoryListScreen(),
     HomeScreen(),
     HomeScreen(),
     HomeScreen(),
