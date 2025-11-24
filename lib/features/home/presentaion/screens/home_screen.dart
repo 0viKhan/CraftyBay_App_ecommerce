@@ -4,10 +4,10 @@ import 'package:e_commerce_shop/app/extensions/app_colors.dart';
 import 'package:e_commerce_shop/features/home/presentaion/screens/home_screen.dart';
 import 'package:e_commerce_shop/features/home/widgets/home_banner_slider.dart';
 import 'package:e_commerce_shop/features/shared/presentation/widgets/app_bar_icon_button.dart';
+import 'package:e_commerce_shop/features/shared/presentation/widgets/product_category_item.dart';
 import 'package:flutter/cupertino.dart'
     show Placeholder, StatefulWidget, State, BuildContext, Widget;
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -44,11 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
             HomeBannerSlider(),
             buildSelectionHeader(title: 'Categories', onTapSeeAll: () {}),
             const SizedBox(height: 16),
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.themeColor.withOpacity(0.4)
-              ),
+
+            ListView.builder(
+              itemCount: 5,
+              primary: false,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context,index) {
+                return ProductCategoryItem();
+              },
             ),
             buildSelectionHeader(title: 'New', onTapSeeAll: () {}),
             const SizedBox(height: 16),
