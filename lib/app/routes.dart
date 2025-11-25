@@ -2,6 +2,7 @@ import 'package:e_commerce_shop/features/auth/presentation/screens/sign_in_scree
 import 'package:e_commerce_shop/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/splash_screen.dart';
 import 'package:e_commerce_shop/features/auth/presentation/screens/verify_otp_screen.dart';
+import 'package:e_commerce_shop/features/products/product_details_screen.dart';
 import 'package:e_commerce_shop/features/products/product_list_screen.dart';
 import 'package:e_commerce_shop/features/shared/presentation/screens/bottom_nav_holder.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,5 +37,9 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings)
     screen=ProductListScreen(categoryname: category);
   }
 
+  else if(settings.name==ProductDetailsScreen.name)
+  {
+    screen=ProductDetailsScreen();
+  }
   return MaterialPageRoute(builder: (ctx)=>screen);
 }
