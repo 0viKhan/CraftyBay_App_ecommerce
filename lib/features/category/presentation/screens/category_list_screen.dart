@@ -1,9 +1,11 @@
-import 'package:e_commerce_shop/features/shared/presentation/controller/main_nav_controller.dart';
-import 'package:e_commerce_shop/features/shared/presentation/widgets/product_category_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+
+import '../../../home/presentaion/screens/home_category_controller.dart';
+import '../../../shared/presentation/controller/main_nav_controller.dart';
+import '../../../shared/presentation/widgets/product_category_item.dart';
 
 class CategoryListScreen extends StatefulWidget {
   const CategoryListScreen({super.key});
@@ -13,40 +15,50 @@ class CategoryListScreen extends StatefulWidget {
 }
 
 class _CategoryListScreenState extends State<CategoryListScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    Get.put(HomeCategoryController());
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult:(_,__){
-        _backToHome();
-      }
-      ,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('categories'),
-          leading: BackButton(onPressed: _backToHome),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Categories'),
+        leading: BackButton(
+          onPressed: () => Get.find<MainNavController>().backToHome(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      
+      ),
+      body: GetBuilder<HomeCategoryController>(
+        builder: (controller) {
+          if (controller.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (controller.categories.isEmpty) {
+            return const Center(child: Text('No categories found'));
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(12),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
             ),
-            itemCount: 10,
+            itemCount: controller.categories.length,
             itemBuilder: (context, index) {
-              return FittedBox(child: ProductCategoryItem());
+              final category = controller.categories[index];
+              return ProductCategoryItem(
+                title: category.title,
+                iconUrl: category.icon,
+              );
             },
-          ),
-        ),
+          );
+        },
       ),
     );
   }
-  void _backToHome()
-  {
-    Get.find<MainNavController>().backToHome();
-  }
-
 }
